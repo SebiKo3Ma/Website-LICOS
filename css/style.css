@@ -1,0 +1,11 @@
+.image-container{
+    max-height: 93vh;
+    overflow: hidden;
+}
+
+
+.content{
+    height: 4000px;
+    background-color: white;
+}
+
