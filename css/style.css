@@ -1,11 +1,49 @@
 .image-container{
     max-height: 93vh;
     overflow: hidden;
+    position: relative;
+    display: inline-block;
 }
 
+.image-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 80%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    padding: 10px 20px; 
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+.overlay-text{
+    color: #fff;
+    font-size: 20px;
+
+    text-align: center;
+}
 
 .content{
     height: 4000px;
     background-color: white;
+}
+
+.navbar-nav{
+    font-size: 16pt;
+}
+
+.nav-link{
+    color: #fff;
+    padding: 10px;
+}
+
+.logoImage{
+    max-width: 10%;
+    max-height: 10%;
 }
 
