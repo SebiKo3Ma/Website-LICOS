@@ -9,8 +9,11 @@
     <title>Centrul Local „Licos” Timișoara</title>
 </head>
 <body>
+
+     <!-- Top Image Container -->
     <div class="container-fluid p-0 image-container">
         <img class="img-fluid" src="./img/homepageImage.jpg" alt="">
+         <!-- Top Image Overlay -->
         <div class="overlay bg-warning">
             <img class="logoImage" src="./img/logo.png" alt="">
             <div class="overlay-text bg-primary">
@@ -19,6 +22,7 @@
         </div>
     </div>
 
+     <!-- Navbar -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-warning sticky-top justify-content-center pb-3">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -51,37 +55,56 @@
       </nav>
 
       <div class="container-fluid content">
-        <!-- Carousel -->
-        <div class="carousel slide container-lg pt-3" data-bs-ride="carousel">
 
-            <!-- Indicators/dots -->
-            <div class="carousel-indicators">
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+         <!-- Presentation text -->
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-4 p-5">
+                <h1 class="text-center">Despre Cercetășie</h1><br>
+                <p>Cercetăşia este educaţie pentru viaţă - completează, în educaţia tânărului, familia şi şcoala şi dezvoltă cunoaşterea de sine, necesitatea de a căuta noul, de a participa, de a explora, de a descoperi, de a făuri, de a ajuta. Putem sublinia că este distracţie cu un scop – prin recreere şi aventură, cercetăşia îşi atinge obiectivul său de dezvoltare fizică, psihică, intelectuală, socială şi spirituală a tinerilor. Este o mişcare internaţională – există organizaţii scout în peste 216 de ţări şi teritorii numărând peste 28 de milioane de cercetaşi în întreaga lume. Astfel, cercetăşia este o mişcare deschisă tuturor indiferent de rasă, credinţă, sex, în concordanţă cu scopul, principiile şi metoda concepute de Sir Robert Baden-Powell, inițiatorul acestei mișcări.</p>
             </div>
-        
-            <!-- The slideshow/carousel -->
-            <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="./img/camp1.jpg" alt="" class="d-block w-100">
+            <div class="col-lg-4 p-5">
+                <h1 class="text-center">Despre Licos</h1><br>
+                <p>Centrul Local „Licos” Timişoara a fost înfiinţat în 8 mai 2003. Numele provine din limba greacă, însemnând lup şi se referă la un ritual al lupilor. Termenul a fost copiat ulterior de unele triburi dacice, făcând referire la acel moment în care tinerii erau alungaţi din mijlocul semenilor şi trebuiau să înfrunte singuri anumite obstacole. În momentul în care sarcinile erau îndeplinite, puteau să se întoarcă la tribul lor şi erau priviţi ca adulţi, ca persoane capabile. Aceeaşi schimbare şi-o propune şi Organizaţia Naţională „Cercetaşii României” - și anume educarea tinerilor în devenirea lor ca adulţi responsabili.</p>
             </div>
-            <div class="carousel-item">
-                <img src="./img/camp2.jpg" alt="" class="d-block w-100">
-            </div>
-            <div class="carousel-item">
-                <img src="./img/camp3.jpg" alt="" class="d-block w-100">
-            </div>
-            </div>
-        
-            <!-- Left and right controls/icons -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-            </button>
+            <div class="col-lg-2"></div>
         </div>
-      </div>
+
+        <div class="row">
+
+            <div class="col-lg-2"></div>
+            <!-- Carousel -->
+            <div id="demo" class="carousel pt-3 col-lg-8" data-bs-ride="carousel">
+
+                <!-- Indicators/dots -->
+                <div class="carousel-indicators">
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                </div>
+            
+                <!-- The slideshow/carousel -->
+                <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./img/camp1.jpg" alt="" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/camp2.jpg" alt="" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/camp3.jpg" alt="" class="d-block w-100">
+                </div>
+                </div>
+            
+                <!-- Left and right controls/icons -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
