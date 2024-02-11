@@ -58,7 +58,6 @@
 }
 
 .content{
-    height: 4000px;
     background-color: white;
 }
 
@@ -69,6 +68,21 @@
 .nav-link{
     color: #fff;
     padding: 10px;
+}
+
+#cards{
+    display: flex;
+    justify-content: space-around;
+}
+
+.card{
+    width: 350px;
+    margin-top: 30px;
+}
+
+.btnContainer{
+    display: flex;
+    justify-content: space-around;
 }
 
 @media only screen and (max-width: 700px){
@@ -91,6 +105,46 @@
     #overlay{
         padding-top: 0%;
     }
+}
+
+.footer {
+    background-color: #3b4553;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.social-icons li {
+    margin-right: 10px;
+}
+
+.social-icons li:last-child {
+    margin-right: 0;
+}
+
+.social-icons a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #777;
+}
+
+.admin{
+    text-align: right;
 }
 
 
