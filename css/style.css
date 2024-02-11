@@ -24,6 +24,14 @@
     padding-top: 30%;
 }
 
+#overlay2{
+    background-color: #3b4553;
+}
+
+#navbar{
+    background-color: #f9ae24;
+}
+
 .logoWrapper {
     display: flex;
     align-items: center;
