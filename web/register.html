@@ -55,7 +55,128 @@
       
       </nav>
 
-      <div class="container-fluid content"></div>
+      <div class="container-fluid content">
+        <div id="registerForm" class="container">
+            <h1 class="text-center my-5">Register here</h1>
+            <form action="./register.php" method="POST">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" name="firstName" required>
+                    <label for="firstName" class="form-label">First Name:</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" name="lastName" required>
+                    <label for="lastName" class="form-label">Last Name:</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" id="dob" placeholder="Enter your date of birth" name="dob" required>
+                    <label for="dob" class="form-label">Date of Birth:</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <select class="form-control" name="ageGroup" id="ageGroup">
+                        <option value="lupisori">Lupișori</option>
+                        <option value="temerari">Temerari</option>
+                        <option value="exploratori">Exploratori</option>
+                        <option value="seniori">Seniori</option>
+                    </select>
+                    <label for="ageGroup">Age Group:</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email" required>
+                    <label for="email" class="form-label">Email:</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="07xx-xxx-xxx" pattern="[0-9]{10}" required>
+                    <label for="phone" class="form-label">Phone number (07xx-xxx-xxx):</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="address" placeholder="Enter your address" name="address" required>
+                    <label for="address" class="form-label">Address:</label>
+                </div>
+    
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="city" placeholder="Enter your city" name="city" required>
+                    <label for="city" class="form-label">City:</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <select class="form-control" name="county" id="county">
+                        <option value="Alba">Alba</option>
+                        <option value="Arad">Arad</option>
+                        <option value="Arges">Arges</option>
+                        <option value="Bacau">Bacau</option>
+                        <option value="Bihor">Bihor</option>
+                        <option value="Bistrita-Nasaud">Bistrita-Nasaud</option>
+                        <option value="Botosani">Botosani</option>
+                        <option value="Braila">Braila</option>
+                        <option value="Brasov">Brasov</option>
+                        <option value="Bucuresti">Bucuresti</option>
+                        <option value="Buzau">Buzau</option>
+                        <option value="Calarasi">Calarasi</option>
+                        <option value="Caras-Severin">Caras-Severin</option>
+                        <option value="Cluj">Cluj</option>
+                        <option value="Constanta">Constanta</option>
+                        <option value="Covasna">Covasna</option>
+                        <option value="Dambovita">Dambovita</option>
+                        <option value="Dolj">Dolj</option>
+                        <option value="Galati">Galati</option>
+                        <option value="Giurgiu">Giurgiu</option>
+                        <option value="Gorj">Gorj</option>
+                        <option value="Harghita">Harghita</option>
+                        <option value="Hunedoara">Hunedoara</option>
+                        <option value="Ialomita">Ialomita</option>
+                        <option value="Iasi">Iasi</option>
+                        <option value="Ilfov">Ilfov</option>
+                        <option value="Maramures">Maramures</option>
+                        <option value="Mehedinti">Mehedinti</option>
+                        <option value="Mures">Mures</option>
+                        <option value="Neamt">Neamt</option>
+                        <option value="Olt">Olt</option>
+                        <option value="Prahova">Prahova</option>
+                        <option value="Salaj">Salaj</option>
+                        <option value="Satu Mare">Satu Mare</option>
+                        <option value="Sibiu">Sibiu</option>
+                        <option value="Suceava">Suceava</option>
+                        <option value="Teleorman">Teleorman</option>
+                        <option value="Timis" selected>Timis</option>
+                        <option value="Tulcea">Tulcea</option>
+                        <option value="Valcea">Valcea</option>
+                        <option value="Vaslui">Vaslui</option>
+                        <option value="Vrancea">Vrancea</option>
+                    </select>
+                    <label for="county">County:</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="postcode" placeholder="Enter your postcode" name="postcode" required>
+                    <label for="postcode" class="form-label">Postcode:</label>
+                </div>
+                
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="rules" name="rules" value="1" required>
+                    <label class="form-check-label">I agree with the rules of the organization.</label>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="image" name="image" value="1" required>
+                    <label class="form-check-label">I consent to my image being used by the organization.</label>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter" value="1">
+                    <label class="form-check-label">Subscribe to the newsletter</label>
+                </div>
+        
+                
+                <button type="submit" class="btn btn-primary mb-3">Submit</button>
+            </form>
+        </div>
+      </div>
 
       <footer class="footer">
         <div class="container">
