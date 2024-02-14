@@ -57,41 +57,40 @@
 
       <div class="container-fluid content">
         <?php
-            /* Verificar se o formulário foi submetido */
+            /* Verify if the form is submitted */
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $name = filter_input(INPUT_POST, 'name');
                 $email = filter_input(INPUT_POST, 'email');
                 $message = filter_input(INPUT_POST, 'message');
                 /* validar os dados recebidos do formulário */
                 if (empty($name) || empty($email) || empty($message)){
-                    echo "Todos os campos do formulário devem conter valores ";
+                    echo "All form fields must be filled! ";
                     exit();
                 }    
             }
             else{
-            echo " Erro, formulário não submetido ";
+            echo "Error, the form is not submitted! ";
             exit();
             }
 
             $conn = new mysqli("localhost", "root", "", "licoswebsite");
 
             if ($conn->connect_errno) {
-                echo "Falha na ligação: " . $conn->connect_error; 
+                echo "Connection error: " . $conn->connect_error; 
                 exit();
             }
 
-            /* texto sql da consulta*/
+            /*SQL query*/
             $query = "INSERT INTO contact (name, email, message, timestamp) VALUES ('$name', '$email', '$message', CURRENT_TIMESTAMP )";
-            /* executar a consulta e testar se ocorreu erro */
+            /* execute the query end check for errors */
             if (!$conn->query($query)) {
-                echo " Falha ao executar a consulta: \"$query\" <br>" . $conn->error;
-                $conn->close();  /* fechar a ligação */
+                echo "Error executing the query: \"$query\" <br>" . $conn->error;
+                $conn->close();  /*Close the connection */
             }
             else{
-                /* percorrer os registos (linhas) da tabela e mostrar na página */
-                echo " Novo registo inserido com sucesso" ;
+                echo "Mesajul a fost trimis cu succes!" ;
                 }
-            $conn->close();       /* fechar a ligação */
+            $conn->close();       /* close the connection */
 
         ?>
       </div>

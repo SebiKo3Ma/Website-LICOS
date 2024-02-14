@@ -13,4 +13,3 @@
         document.querySelector('.navbar').style.marginTop = offset + 'px';
       })
     );
- 

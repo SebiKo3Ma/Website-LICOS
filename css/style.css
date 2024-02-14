@@ -1,6 +1,16 @@
+body{
+    height: 100%;
+    margin: 0;
+}
+
+.content{
+    background-color: #fff;
+    min-height: 90vh;
+}
+
 .image-container{
     max-height: 93vh;
-    /*overflow: hidden;*/
+    overflow: hidden;
     position: relative;
     display: inline-block;
 }
@@ -26,6 +36,7 @@
 
 #overlay2{
     background-color: #3b4553;
+    margin: 0;
 }
 
 #navbar{
@@ -55,10 +66,6 @@
     margin-left: 10px;
     justify-content: center;
     flex-direction: column;
-}
-
-.content{
-    background-color: white;
 }
 
 .navbar-nav{
