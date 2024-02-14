@@ -29,7 +29,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
-          <!-- Links -->
+          
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" href="./../index.html">Home</a>
@@ -56,37 +56,44 @@
       </nav>
 
       <div class="container-fluid content">
-        <div id="contactForm" class="container">
-            <h1>Contact us here</h1>
-            <form action="./contact.php" method="POST">
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name:</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name">
-                  </div>
+        <?php
+            /* Verificar se o formulário foi submetido */
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $name = filter_input(INPUT_POST, 'name');
+                $email = filter_input(INPUT_POST, 'email');
+                $message = filter_input(INPUT_POST, 'message');
+                /* validar os dados recebidos do formulário */
+                if (empty($name) || empty($email) || empty($message)){
+                    echo "Todos os campos do formulário devem conter valores ";
+                    exit();
+                }    
+            }
+            else{
+            echo " Erro, formulário não submetido ";
+            exit();
+            }
 
-                <div class="mb-3 mt-3">
-                  <label for="email" class="form-label">Email:</label>
-                  <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email">
-                </div>
-                
-                <div class="mb-3 mt-3">
-                    <label for="message">Message:</label>
-                    <textarea class="form-control" rows="5" id="message" name="message"></textarea>
-                  </div>
-                
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            $conn = new mysqli("localhost", "root", "", "licoswebsite");
 
-            <h3>And don't forget to follow our socials:</h3>
-            <div class="col-md-6 mt-2">
-                <ul class="social-icons" id="contactIcons">
-                    <li><a href="https://www.facebook.com/timisoarascout"><i class="fab fa-facebook"></i></a></li>
-                    <li><a href="https://www.instagram.com/timisoarascout/"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="https://www.tiktok.com/@timisoara.scout"><i class="fab fa-tiktok"></i></a></li>
-                </ul>
-            </div>
-        </div>
+            if ($conn->connect_errno) {
+                echo "Falha na ligação: " . $conn->connect_error; 
+                exit();
+            }
 
+            /* texto sql da consulta*/
+            $query = "INSERT INTO contact (name, email, message, timestamp) VALUES ('$name', '$email', '$message', CURRENT_TIMESTAMP )";
+            /* executar a consulta e testar se ocorreu erro */
+            if (!$conn->query($query)) {
+                echo " Falha ao executar a consulta: \"$query\" <br>" . $conn->error;
+                $conn->close();  /* fechar a ligação */
+            }
+            else{
+                /* percorrer os registos (linhas) da tabela e mostrar na página */
+                echo " Novo registo inserido com sucesso" ;
+                }
+            $conn->close();       /* fechar a ligação */
+
+        ?>
       </div>
 
       <footer class="footer">

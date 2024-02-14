@@ -134,6 +134,10 @@
     font-size: 20px;
 }
 
+#contactIcons a{
+    color: #000000;
+}
+
 .footer a {
     color: #fff;
     text-decoration: none;
