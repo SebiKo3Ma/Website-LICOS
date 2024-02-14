@@ -127,6 +127,10 @@ body{
     display: flex;
 }
 
+#contactIcons{
+    justify-content: center;
+}
+
 .social-icons li {
     margin-right: 10px;
 }
@@ -143,6 +147,7 @@ body{
 
 #contactIcons a{
     color: #000000;
+    font-size: 32px;
 }
 
 .footer a {
@@ -156,6 +161,16 @@ body{
 
 .admin{
     text-align: right;
+}
+
+.queryResults{
+    text-align: center;
+    font-size: 20px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 15px;
+    padding: 40px;
+    margin: 10%;
 }
 
 

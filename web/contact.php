@@ -47,7 +47,7 @@
                 <a class="nav-link" href="./gallery.html">Gallery</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#">Contact</a>
+                <a class="nav-link" href="./contact.html">Contact</a>
             </li>
 
           </ul>
@@ -56,43 +56,45 @@
       </nav>
 
       <div class="container-fluid content">
-        <?php
-            /* Verify if the form is submitted */
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $name = filter_input(INPUT_POST, 'name');
-                $email = filter_input(INPUT_POST, 'email');
-                $message = filter_input(INPUT_POST, 'message');
-                /* validar os dados recebidos do formulário */
-                if (empty($name) || empty($email) || empty($message)){
-                    echo "All form fields must be filled! ";
-                    exit();
-                }    
-            }
-            else{
-            echo "Error, the form is not submitted! ";
-            exit();
-            }
-
-            $conn = new mysqli("localhost", "root", "", "licoswebsite");
-
-            if ($conn->connect_errno) {
-                echo "Connection error: " . $conn->connect_error; 
-                exit();
-            }
-
-            /*SQL query*/
-            $query = "INSERT INTO contact (name, email, message, timestamp) VALUES ('$name', '$email', '$message', CURRENT_TIMESTAMP )";
-            /* execute the query end check for errors */
-            if (!$conn->query($query)) {
-                echo "Error executing the query: \"$query\" <br>" . $conn->error;
-                $conn->close();  /*Close the connection */
-            }
-            else{
-                echo "Mesajul a fost trimis cu succes!" ;
+        <div class="queryResults">
+            <?php
+                /* Verify if the form is submitted */
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $name = filter_input(INPUT_POST, 'name');
+                    $email = filter_input(INPUT_POST, 'email');
+                    $message = filter_input(INPUT_POST, 'message');
+                    /* validar os dados recebidos do formulário */
+                    if (empty($name) || empty($email) || empty($message)){
+                        echo "All form fields must be filled! ";
+                        exit();
+                    }    
                 }
-            $conn->close();       /* close the connection */
+                else{
+                echo "Error, the form is not submitted! ";
+                exit();
+                }
 
-        ?>
+                $conn = new mysqli("localhost", "root", "", "licoswebsite");
+
+                if ($conn->connect_errno) {
+                    echo "Connection error: " . $conn->connect_error; 
+                    exit();
+                }
+
+                /*SQL query*/
+                $query = "INSERT INTO contact (name, email, message, timestamp) VALUES ('$name', '$email', '$message', CURRENT_TIMESTAMP )";
+                /* execute the query end check for errors */
+                if (!$conn->query($query)) {
+                    echo "Error executing the query: \"$query\" <br>" . $conn->error;
+                    $conn->close();  /*Close the connection */
+                }
+                else{
+                    echo "Mesajul a fost trimis cu succes!" ;
+                    }
+                $conn->close();       /* close the connection */
+
+            ?>
+        </div>
       </div>
 
       <footer class="footer">

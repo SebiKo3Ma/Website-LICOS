@@ -57,28 +57,28 @@
 
       <div class="container-fluid content">
         <div id="contactForm" class="container">
-            <h1>Contact us here</h1>
+            <h1 class="text-center my-5">Contact us here</h1>
             <form action="./contact.php" method="POST">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name:</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name">
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name" required>
                   </div>
 
                 <div class="mb-3 mt-3">
                   <label for="email" class="form-label">Email:</label>
-                  <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email">
+                  <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email" required>
                 </div>
                 
                 <div class="mb-3 mt-3">
                     <label for="message">Message:</label>
-                    <textarea class="form-control" rows="5" id="message" name="message"></textarea>
+                    <textarea class="form-control" rows="5" id="message" name="message" required></textarea>
                   </div>
                 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
 
-            <h3>And don't forget to follow our socials:</h3>
-            <div class="col-md-6 mt-2">
+            <h3 class="text-center mt-4">And don't forget to follow our socials:</h3>
+            <div class="mt-2">
                 <ul class="social-icons" id="contactIcons">
                     <li><a href="https://www.facebook.com/timisoarascout"><i class="fab fa-facebook"></i></a></li>
                     <li><a href="https://www.instagram.com/timisoarascout/"><i class="fab fa-instagram"></i></a></li>
