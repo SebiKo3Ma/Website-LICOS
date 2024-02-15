@@ -185,4 +185,10 @@ body{
     height: 95%;
 }
 
+.lightcaption{
+    background-color: rgba(119, 119, 119, 0.5);
+    text-shadow: 3px 2px 3px #000000;
+    border-radius: 10px;
+}
+
 
