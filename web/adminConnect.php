@@ -55,7 +55,56 @@
       
       </nav>
 
-      <div class="container-fluid content"></div>
+      <div class="container-fluid content">
+
+      <?php
+            // Database connection
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "licoswebsite";
+
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // Retrieve form data
+            $username = $_POST['user'];
+            $password = $_POST['password'];
+
+            // Encrypt the password
+            $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
+
+            // SQL query to check if the username exists and retrieve the encrypted password
+            $sql = "SELECT username, password FROM users WHERE username = '$username'";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                // Verify password
+                if (password_verify($password, $row['password'])) {
+                    // Redirect to another page on successful login
+                    header("Location: admin.php");
+                    exit();
+                } else {
+                    // Incorrect password
+                    echo "Incorrect password";
+                    exit();
+                }
+            } else {
+                // Username not found
+                echo "user not found";
+                exit();
+            }
+
+            $conn->close();
+        ?>
+
+            
+      </div>
 
       <footer class="footer">
         <div class="container">

@@ -119,7 +119,7 @@
                     </ul>
                 </div>
                 <div class="col-md-6 mt-2 admin">
-                    <a href="./adminConnect.html">Admin Connect</a>
+                    <a href="./login.php">Admin Connect</a>
                 </div>
             </div>
             <div class="row">

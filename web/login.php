@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="./../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>Galerie - Centrul Local „Licos” Timișoara</title>
+    <title>Despre noi - Centrul Local „Licos” Timișoara</title>
 </head>
 <body>
         <div id="overlay2" class="overlay row">
@@ -44,7 +44,7 @@
                 <a class="nav-link" href="./register.html">Register</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#">Gallery</a>
+                <a class="nav-link" href="./gallery.html">Gallery</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="./contact.html">Contact</a>
@@ -55,7 +55,26 @@
       
       </nav>
 
-      <div class="container-fluid content"></div>
+      <div class="container-fluid content">
+
+            <div id="adminForm" class="container">
+                <h2 class="text-center my-5">Admin Login</h2>
+                <form action="./adminConnect.php" method="POST">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="user" placeholder="Username" name="user" required>
+                        <label for="user" class="form-label">Username:</label>
+                    </div>
+
+                    <div class="form-floating mb-3 mt-3">
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                    <label for="password" class="form-label">Password:</label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Log In</button>
+                </form>
+            </div>
+            
+      </div>
 
       <footer class="footer">
         <div class="container">
@@ -68,7 +87,7 @@
                     </ul>
                 </div>
                 <div class="col-md-6 mt-2 admin">
-                    <a href="./login.php">Admin Connect</a>
+                    <a href="#">Admin Connect</a>
                 </div>
             </div>
             <div class="row">
