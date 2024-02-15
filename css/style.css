@@ -173,4 +173,12 @@ body{
     margin: 10%;
 }
 
+.horizontal input{
+    padding-left: 10px;
+}
+
+.label1{
+    margin-left: 10px;
+}
+
 

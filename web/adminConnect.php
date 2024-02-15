@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="./../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>Activități - Centrul Local „Licos” Timișoara</title>
+    <title>Despre noi - Centrul Local „Licos” Timișoara</title>
 </head>
 <body>
         <div id="overlay2" class="overlay row">
@@ -38,7 +38,7 @@
               <a class="nav-link" href="./about.html">About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="#">Activities</a>
+              <a class="nav-link" href="./activities.html">Activities</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="./register.html">Register</a>
@@ -68,7 +68,7 @@
                     </ul>
                 </div>
                 <div class="col-md-6 mt-2 admin">
-                    <a href="./adminConnect.php">Admin Connect</a>
+                    <a href="#">Admin Connect</a>
                 </div>
             </div>
             <div class="row">
