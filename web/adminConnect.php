@@ -58,6 +58,8 @@
       <div class="container-fluid content">
 
       <?php
+            session_start();
+
             // Database connection
             $servername = "localhost";
             $username = "root";
@@ -86,6 +88,7 @@
                 $row = $result->fetch_assoc();
                 // Verify password
                 if (password_verify($password, $row['password'])) {
+                    $_SESSION['loggedin'] = true;
                     // Redirect to another page on successful login
                     header("Location: admin.php");
                     exit();
