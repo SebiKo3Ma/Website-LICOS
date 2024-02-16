@@ -74,7 +74,7 @@
 
                     if ($conn->query($sql) === TRUE) {
                         echo "Record deleted successfully.<br>";
-                        echo "<a href='admin.php' class='btn btn-primary'>Back to List</a>";
+                        echo "<a href='admin.php' class='btn btn-primary mt-1'>Back to List</a>";
                     } else {
                         echo "Error deleting record: " . $conn->error;
                     }
