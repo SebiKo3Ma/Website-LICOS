@@ -97,29 +97,29 @@
 
                     // Create a <div> element with event data
                     echo "<div class='event row p-4 my-3'>";
-                        echo "<div class='event-text col-md-8'>";
+                        echo "<div class='event-text col-lg-8 my-auto'>";
                             echo "<h2>" . $row["name"] . "</h2>";
                             if($row["edition"] != NULL){
                                 echo "<p>Edition: " . $row["edition"] . "</p>";
                             }
                             echo "<p>Locația: " . $row["location"] . "</p>";
-                            echo "<p>Perioada " . $dateStart . " to " . $dateEnd . "</p>";
+                            echo "<p>Perioada: " . $dateStart . " - " . $dateEnd . "</p>";
                             echo $row["description"] . "</p>";
                         echo "</div>";
                         if ($result2->num_rows > 0) {
-                            echo "<div id='event" . $row["id"] . "'  class='event-images carousel col-md-4' data-bs-ride='carousel'>";
+                            echo "<div id='event" . $row["id"] . "'  class='event-images carousel col-lg-4' data-bs-ride='carousel'>";
                                 echo "<div class='carousel-inner'>";
                                     while($row2 = $result2->fetch_assoc()) {
                                     echo "<div class='carousel-item "; if($active == 0){$active = 1; echo "active";} echo"'>";
-                                        echo "<img src='./../img/" . $row2["url"] . ".jpg' alt='' class='d-block w-100'>";
+                                        echo "<img src='./../img/" . $row2["url"] . ".jpg' alt='' class='d-block w-100 img-thumbnail'>";
                                     echo "</div>";
                                     }
                                 echo "</div>";
 
-                                echo "<button class='carousel-control-prev' type='button' data-bs-target='event" . $row["id"] . "' data-bs-slide='prev'>
+                                echo "<button class='carousel-control-prev' type='button' data-bs-target='#event" . $row["id"] . "' data-bs-slide='prev'>
                                 <span class='carousel-control-prev-icon'></span>
                                 </button>
-                                <button class='carousel-control-next' type='button' data-bs-target='event" . $row["id"] . "' data-bs-slide='next'>
+                                <button class='carousel-control-next' type='button' data-bs-target='#event" . $row["id"] . "' data-bs-slide='next'>
                                 <span class='carousel-control-next-icon'></span>
                                 </button>";
                             echo "</div>";
@@ -130,6 +130,7 @@
                 echo "0 results";
             }
 
+            $pics->close();
             $conn->close();
             ?>
 

@@ -63,7 +63,10 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
       
       </nav>
 
-      <div class="container-fluid content"></div>
+      <div class="container-fluid content">
+
+        <a href="./logout.php" class="btn btn-danger">Log out</a>
+      </div>
 
       <footer class="footer">
         <div class="container">
