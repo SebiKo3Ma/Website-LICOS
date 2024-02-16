@@ -29,7 +29,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
-          <!-- Links -->
+          
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" href="./../index.html">Home</a>
@@ -56,57 +56,35 @@
       </nav>
 
       <div class="container-fluid content">
+        <div class="queryResults">
+            <?php
+                $conn = new mysqli("localhost", "root", "", "licoswebsite");
 
-      <?php
-            session_start();
-
-            // Database connection
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "licoswebsite";
-
-            $conn = new mysqli($servername, $username, $password, $dbname);
-
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-
-            // Retrieve form data
-            $username = $_POST['user'];
-            $password = $_POST['password'];
-
-            // Encrypt the password
-            $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
-
-            // SQL query to check if the username exists and retrieve the encrypted password
-            $sql = "SELECT username, password FROM users WHERE username = '$username'";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                // Verify password
-                if (password_verify($password, $row['password'])) {
-                    $_SESSION['loggedin'] = true;
-                    // Redirect to another page on successful login
-                    header("Location: admin.php");
-                    exit();
-                } else {
-                    // Incorrect password
-                    echo "Incorrect password";
+                if ($conn->connect_errno) {
+                    echo "Connection error: " . $conn->connect_error; 
                     exit();
                 }
-            } else {
-                // Username not found
-                echo "user not found";
-                exit();
-            }
 
-            $conn->close();
-        ?>
+                // Check if ID is provided via POST
+                if(isset($_POST['id'])) {
+                    $id = $_POST['id'];
 
-            
+                    // Delete record from the database
+                    $sql = "DELETE FROM events WHERE id = $id";
+
+                    if ($conn->query($sql) === TRUE) {
+                        echo "Record deleted successfully.<br>";
+                        echo "<a href='admin.php' class='btn btn-primary'>Back to List</a>";
+                    } else {
+                        echo "Error deleting record: " . $conn->error;
+                    }
+                } else {
+                    echo "ID not provided.";
+                }
+
+                $conn->close();
+                ?>
+        </div>
       </div>
 
       <footer class="footer">
@@ -120,7 +98,7 @@
                     </ul>
                 </div>
                 <div class="col-md-6 mt-2 admin">
-                    <a href="#">Admin Connect</a>
+                    <a href="./login.php">Admin Connect</a>
                 </div>
             </div>
             <div class="row">

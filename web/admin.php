@@ -61,9 +61,9 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           </ul>
         </div>
       
-      </nav>
+    </nav>
 
-      <div class="container-fluid content">
+    <div class="container-fluid content">
         <div id="postForm" class="container">
             <h2 class="text-center my-5">New Activity</h2>
             <form action="./newPost.php" method="POST" enctype="multipart/form-data">
@@ -106,10 +106,43 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                 <button type="submit" class="btn btn-primary">Post</button>
             </form>
         </div>
-        <a href="./logout.php" class="btn btn-danger my-5">Log out</a>
-      </div>
+        <div id="recordsList" class="container">
+        <h2 class="text-center my-5">Activities</h2>
+        <?php
+            // Database connection
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "licoswebsite";
 
-      <footer class="footer">
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // Retrieve records from the database
+            $sql = "SELECT * FROM events order by dateStart desc";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                // Output data of each row
+                echo "<table class='table table-striped'><tr><th>ID</th><th>Name</th><th>Location</th><th>Date</th><th>Actions</th></tr>";
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr><td>#" . $row["id"]. "</td><td>" . $row["name"]. " " . $row["edition"]. "</td><td>" . $row["location"] . "</td><td>" . $row["dateStart"] . " / " . $row["dateStart"] . "</td><td> <a class='btn btn-warning' href='edit.php?id=".$row["id"]."'>Edit</a>  <a class='btn btn-danger' href='remove.php?id=".$row["id"]."'>Remove</a></td></tr><br>";
+                }
+                echo "</table>";
+            } else {
+                echo "0 results";
+            }
+            $conn->close();
+            ?>
+        </div>
+
+        <a href="./logout.php" class="btn btn-danger my-5">Log out</a>
+    </div>
+
+    <footer class="footer">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 mt-2">
