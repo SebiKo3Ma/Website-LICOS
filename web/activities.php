@@ -100,7 +100,7 @@
                         echo "<div class='event-text col-lg-8 my-auto'>";
                             echo "<h2>" . $row["name"] . "</h2>";
                             if($row["edition"] != NULL){
-                                echo "<p>Edition: " . $row["edition"] . "</p>";
+                                echo "<p>Ediția: " . $row["edition"] . "</p>";
                             }
                             echo "<p>Locația: " . $row["location"] . "</p>";
                             echo "<p>Perioada: " . $dateStart . " - " . $dateEnd . "</p>";
@@ -111,7 +111,7 @@
                                 echo "<div class='carousel-inner'>";
                                     while($row2 = $result2->fetch_assoc()) {
                                     echo "<div class='carousel-item "; if($active == 0){$active = 1; echo "active";} echo"'>";
-                                        echo "<img src='./../img/" . $row2["url"] . ".jpg' alt='' class='d-block w-100 img-thumbnail'>";
+                                        echo "<img src='./../img/" . $row2["url"] . "' alt='' class='d-block w-100 img-thumbnail'>";
                                     echo "</div>";
                                     }
                                 echo "</div>";

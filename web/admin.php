@@ -15,7 +15,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="./../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>Despre noi - Centrul Local „Licos” Timișoara</title>
+    <title>Admin - Centrul Local „Licos” Timișoara</title>
 </head>
 <body>
         <div id="overlay2" class="overlay row">
@@ -64,8 +64,49 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
       </nav>
 
       <div class="container-fluid content">
+        <div id="postForm" class="container">
+            <h2 class="text-center my-5">New Activity</h2>
+            <form action="./newPost.php" method="POST" enctype="multipart/form-data">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="name" placeholder="Activity Name" name="name" required>
+                    <label for="name" class="form-label">Activity Name:</label>
+                </div>
 
-        <a href="./logout.php" class="btn btn-danger">Log out</a>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="edition" placeholder="Edition:" name="edition">
+                    <label for="edition" class="form-label">Edition:</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="location" placeholder="Location:" name="location" required>
+                    <label for="location" class="form-label">Location:</label>
+                </div>
+
+                <div class="row">
+                    <div class="form-floating mb-3 col-md-6">
+                        <input type="date" class="form-control" id="dateStart" placeholder="Start date:" name="dateStart" required>
+                        <label for="dateStart" class="form-label label1">Start Date:</label>
+                    </div>
+
+                    <div class="form-floating mb-3 col-md-6">
+                        <input type="date" class="form-control" id="dateEnd" placeholder="End Date:" name="dateEnd" required>
+                        <label for="dateEnd" class="form-label label1">End Date:</label>
+                    </div>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" rows="5" id="description" name="description" required></textarea>
+                    <label for="description">Description:</label>
+                </div>
+                
+                <div class="mb-3">
+                    <input type="file" class="form-control" name="photos[]" multiple>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Post</button>
+            </form>
+        </div>
+        <a href="./logout.php" class="btn btn-danger my-5">Log out</a>
       </div>
 
       <footer class="footer">
