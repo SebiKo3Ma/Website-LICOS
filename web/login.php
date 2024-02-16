@@ -46,7 +46,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
               <a class="nav-link" href="./about.html">About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./activities.html">Activities</a>
+              <a class="nav-link" href="./activities.php">Activities</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="./register.html">Register</a>

@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="./../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>Despre noi - Centrul Local „Licos” Timișoara</title>
+    <title>Activități - Centrul Local „Licos” Timișoara</title>
 </head>
 <body>
         <div id="overlay2" class="overlay row">
@@ -38,7 +38,7 @@
               <a class="nav-link" href="./about.html">About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./activities.php">Activities</a>
+              <a class="nav-link active" href="#">Activities</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="./register.html">Register</a>
@@ -56,9 +56,12 @@
       </nav>
 
       <div class="container-fluid content">
-
       <?php
-            session_start();
+            // Custom array with Romanian month names
+            $romanian_months = array(
+                'ianuarie', 'februarie', 'martie', 'aprilie', 'mai', 'iunie',
+                'iulie', 'august', 'septembrie', 'octombrie', 'noiembrie', 'decembrie'
+            );
 
             // Database connection
             $servername = "localhost";
@@ -73,40 +76,63 @@
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            // Retrieve form data
-            $username = $_POST['user'];
-            $password = $_POST['password'];
-
-            // Encrypt the password
-            $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
-
-            // SQL query to check if the username exists and retrieve the encrypted password
-            $sql = "SELECT username, password FROM users WHERE username = '$username'";
+            // SQL query to retrieve event data
+            $sql = "SELECT id, name, edition, location, dateStart, dateEnd, description FROM events order by dateStart desc";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                // Verify password
-                if (password_verify($password, $row['password'])) {
-                    $_SESSION['loggedin'] = true;
-                    // Redirect to another page on successful login
-                    header("Location: admin.php");
-                    exit();
-                } else {
-                    // Incorrect password
-                    echo "Incorrect password";
-                    exit();
+                // Output data of each row
+                while($row = $result->fetch_assoc()) {
+                    // Format dates for display
+                    // Format dates for display
+                    $dateStart = isset($row["dateStart"]) ? strftime("%e ", strtotime($row["dateStart"])) . $romanian_months[date('n', strtotime($row["dateStart"])) - 1] . strftime(" %Y", strtotime($row["dateStart"])) : "Not specified";
+                    $dateEnd = isset($row["dateEnd"]) ? strftime("%e ", strtotime($row["dateEnd"])) . $romanian_months[date('n', strtotime($row["dateEnd"])) - 1] . strftime(" %Y", strtotime($row["dateEnd"])) : "Not specified";
+            
+                    $sql2 = "select url from pictures, events where events.id = pictures.id and events.id = ?";
+                    $pics = $conn->prepare($sql2);
+                    $pics->bind_param("s", $row['id']);
+                    $pics->execute();
+                    $result2 = $pics->get_result();
+                    $active = 0;
+
+                    // Create a <div> element with event data
+                    echo "<div class='event row p-4 my-3'>";
+                        echo "<div class='event-text col-md-8'>";
+                            echo "<h2>" . $row["name"] . "</h2>";
+                            if($row["edition"] != NULL){
+                                echo "<p>Edition: " . $row["edition"] . "</p>";
+                            }
+                            echo "<p>Locația: " . $row["location"] . "</p>";
+                            echo "<p>Perioada " . $dateStart . " to " . $dateEnd . "</p>";
+                            echo $row["description"] . "</p>";
+                        echo "</div>";
+                        if ($result2->num_rows > 0) {
+                            echo "<div id='event" . $row["id"] . "'  class='event-images carousel col-md-4' data-bs-ride='carousel'>";
+                                echo "<div class='carousel-inner'>";
+                                    while($row2 = $result2->fetch_assoc()) {
+                                    echo "<div class='carousel-item "; if($active == 0){$active = 1; echo "active";} echo"'>";
+                                        echo "<img src='./../img/" . $row2["url"] . ".jpg' alt='' class='d-block w-100'>";
+                                    echo "</div>";
+                                    }
+                                echo "</div>";
+
+                                echo "<button class='carousel-control-prev' type='button' data-bs-target='event" . $row["id"] . "' data-bs-slide='prev'>
+                                <span class='carousel-control-prev-icon'></span>
+                                </button>
+                                <button class='carousel-control-next' type='button' data-bs-target='event" . $row["id"] . "' data-bs-slide='next'>
+                                <span class='carousel-control-next-icon'></span>
+                                </button>";
+                            echo "</div>";
+                        }
+                    echo "</div>";
                 }
             } else {
-                // Username not found
-                echo "user not found";
-                exit();
+                echo "0 results";
             }
 
             $conn->close();
-        ?>
+            ?>
 
-            
       </div>
 
       <footer class="footer">
@@ -120,7 +146,7 @@
                     </ul>
                 </div>
                 <div class="col-md-6 mt-2 admin">
-                    <a href="#">Admin Connect</a>
+                    <a href="./login.php">Admin Connect</a>
                 </div>
             </div>
             <div class="row">
